@@ -131,7 +131,7 @@ fig.update_layout(title={'text': 'All Cause Mortality By Age in England and Wale
                  yaxis_title='Number of Deaths',
                  xaxis = dict(tickangle=-45))
 #fig.show()
-fig.write_html("all_mortality.html")
+fig.write_html("all_mortality_age.html")
 # +
 
 
