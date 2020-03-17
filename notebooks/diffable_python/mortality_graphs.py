@@ -37,7 +37,8 @@ fig.update_layout(title={'text': 'Percent of All Mortality Caused by Respiratory
                   xaxis = dict(tickangle=-30))#,
                   #annotations=[dict(x='10 Jan 2020', y=14058, text='Peak All Cause Mortality', showarrow=True)])
 
-fig.show()
+fig.write_html("resp_mortality.html")
+#fig.show()
 
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
@@ -79,7 +80,8 @@ fig.update_layout(title={'text': 'All Cause & Repiratory Mortality in England an
                                dict(x='28 Feb 2020', y=10816, text='2020 Low All Cause Mortality', ax=-110, ay=-20)
                               ])
 
-fig.show()
+#fig.show()
+fig.write_html("all_mortality.html")
 
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
@@ -128,7 +130,8 @@ fig.update_layout(title={'text': 'All Cause Mortality By Age in England and Wale
                  xaxis_title='Week Ending Date',
                  yaxis_title='Number of Deaths',
                  xaxis = dict(tickangle=-45))
-fig.show()
-# -
+#fig.show()
+fig.write_html("all_mortality.html")
+# +
 
 
