@@ -71,7 +71,7 @@ fig.add_shape(
             )
 ))
 
-fig.update_layout(title={'text': 'All Cause & Repiratory Mortality in England and Wales: 2020', 'xanchor': 'center', 'x': 0.5}, 
+fig.update_layout(title={'text': 'All Cause Mortality in England and Wales', 'xanchor': 'center', 'x': 0.5}, 
                   xaxis_title='Week Ending Date',
                   yaxis_title='Number of Deaths',
                   xaxis = dict(tickangle=-45),
@@ -132,6 +132,6 @@ fig.update_layout(title={'text': 'All Cause Mortality By Age in England and Wale
                  xaxis = dict(tickangle=-45))
 fig.show()
 #fig.write_html("all_mortality_age.html")
-# -
+# +
 
 
