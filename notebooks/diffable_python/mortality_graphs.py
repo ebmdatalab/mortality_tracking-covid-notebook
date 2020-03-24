@@ -20,9 +20,10 @@ import numpy as np
 
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
-         '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020']
-all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816], dtype=np.float)
-rep_deaths = np.array([2141, 2477, 2188, 1894, 1746, 1572, 1586, 1587, 1517], dtype=np.float)
+         '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020']
+all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895], 
+                         dtype=np.float)
+rep_deaths = np.array([2141, 2477, 2188, 1894, 1746, 1572, 1602, 1598, 1519, 1546], dtype=np.float)
 
 fig = go.Figure()
 
@@ -42,9 +43,9 @@ fig.show()
 
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
-         '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020']
-all_mortality = [12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895]
-five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498]
+         '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020', '13 Mar 2020']
+all_mortality = [12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019]
+five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498, 11025]
 
 fig = go.Figure()
 
@@ -86,14 +87,19 @@ fig.show()
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
          '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020']
-all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895], dtype=np.float)
-deaths_under_1 = np.array([48, 50, 69, 53, 50, 31, 43, 51, 49, 56], dtype=np.float)
-deaths_1_14 = np.array([16, 26, 15, 21, 15, 16, 12, 18, 20, 20], dtype=np.float)
-deaths_15_44 = np.array([189, 275, 313, 314, 308, 271, 284, 321, 314, 313], dtype=np.float)
-deaths_45_64 = np.array([1202, 1500, 1517, 1357, 1349, 1331, 1289, 1271, 1257, 1252], dtype=np.float)
-deaths_65_74 = np.array([1860, 2198, 2013, 1958, 1927, 1808, 1753, 1744, 1795, 1769], dtype=np.float)
-deaths_75_84 = np.array([3583, 4014, 3715, 3337, 3257, 3056, 3008, 3032, 2967, 3124], dtype=np.float)
-deaths_over_85 = np.array([5356, 5995, 5348, 4816, 4706, 4473, 4555, 4404, 4414, 4361], dtype=np.float)
+all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019], 
+                         dtype=np.float)
+deaths_under_1 = np.array([48, 50, 69, 53, 50, 31, 43, 51, 49, 56, 53], dtype=np.float)
+deaths_1_14 = np.array([16, 26, 15, 21, 15, 16, 12, 18, 20, 20 ,22], dtype=np.float)
+deaths_15_44 = np.array([189, 275, 313, 314, 308, 271, 284, 321, 314, 313, 311], dtype=np.float)
+deaths_45_64 = np.array([1202, 1500, 1517, 1357, 1349, 1331, 1289, 1271, 1257, 1252, 1341], 
+                        dtype=np.float)
+deaths_65_74 = np.array([1860, 2198, 2013, 1958, 1927, 1808, 1753, 1744, 1795, 1769, 1754], 
+                        dtype=np.float)
+deaths_75_84 = np.array([3583, 4014, 3715, 3337, 3257, 3056, 3008, 3032, 2967, 3124, 3104], 
+                        dtype=np.float)
+deaths_over_85 = np.array([5356, 5995, 5348, 4816, 4706, 4473, 4555, 4404, 4414, 4361, 4434], 
+                          dtype=np.float)
 
 fig = go.Figure()
 
@@ -132,6 +138,6 @@ fig.update_layout(title={'text': 'All Cause Mortality By Age in England and Wale
                  xaxis = dict(tickangle=-45))
 fig.show()
 #fig.write_html("all_mortality_age.html")
-# +
+# -
 
 
