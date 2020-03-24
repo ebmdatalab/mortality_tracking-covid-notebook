@@ -45,7 +45,7 @@ fig.show()
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
          '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020', '13 Mar 2020']
 all_mortality = [12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019]
-five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498, 11025]
+five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498, 11205]
 
 fig = go.Figure()
 
@@ -138,6 +138,6 @@ fig.update_layout(title={'text': 'All Cause Mortality By Age in England and Wale
                  xaxis = dict(tickangle=-45))
 fig.show()
 #fig.write_html("all_mortality_age.html")
-# -
+# +
 
 
