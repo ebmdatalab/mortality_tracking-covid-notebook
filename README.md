@@ -1,6 +1,6 @@
 # EBM DataLab's skeleton notebook environment
 
-![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
+![status](https://github.com/ebmdatalab/mortality_tracking-covid-notebook/workflows/Notebook%20checks/badge.svg)
 
 ## Getting started with this skeleton project
 
