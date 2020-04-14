@@ -210,6 +210,32 @@ fig.show()
 
 
 # +
+ft_ff = [deaths_ht(1,eng_wales_ages_18[2]), deaths_ht(8,eng_wales_ages_18[2]), deaths_ht(43,eng_wales_ages_18[2])]
+ff_sf = [deaths_ht(6,eng_wales_ages_18[3]), deaths_ht(63,eng_wales_ages_18[3]), deaths_ht(412,eng_wales_ages_18[3])]
+sf_sf = [deaths_ht(20,eng_wales_ages_18[4]), deaths_ht(99,eng_wales_ages_18[4]), deaths_ht(626,eng_wales_ages_18[4])]
+sf_ef = [deaths_ht(31,eng_wales_ages_18[5]), deaths_ht(181,eng_wales_ages_18[5]), deaths_ht(1231,eng_wales_ages_18[5])]
+ef_plus = [deaths_ht(45,eng_wales_ages_18[6]), deaths_ht(188,eng_wales_ages_18[6]), deaths_ht(1163,eng_wales_ages_18[6])]
+
+c_weeks = ['20 Mar 2020', '27 Mar 2020', '3 Apr 2020']
+
+fig = go.Figure(data = [
+    go.Bar(name='<1', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
+    go.Bar(name='1-14', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
+    go.Bar(name='15-44', x=c_weeks, y=ft_ff, text=ft_ff, textposition='outside'),
+    go.Bar(name='45-64', x=c_weeks, y=ff_sf, text=ff_sf, textposition='outside'),
+    go.Bar(name='65-74', x=c_weeks, y=sf_sf, text=sf_sf, textposition='outside'),
+    go.Bar(name='75-84', x=c_weeks, y=sf_ef, text=sf_ef, textposition='outside'),
+    go.Bar(name='85+', x=c_weeks, y=ef_plus, text=ef_plus, textposition='outside')
+])
+
+fig.update_layout(title={'text': 'COVID-19 Mortality By Age per 100,000 population <br> in England and Wales', 'xanchor': 'center', 'x': 0.5},
+                  barmode='group', 
+                  yaxis_range=(0, 90),  
+                  xaxis_title='Week Ending Date', 
+                  yaxis_title='Deaths/100000 pop')
+fig.show()
+fig.write_html("html/covid_mortality_age_adj.html")
+# +
 c_weeks = ['20 Mar 2020', '27 Mar 2020', '03 Apr 2020']
 
 c_deaths_under_1 = np.array([0,0,0], dtype=np.float)
@@ -262,32 +288,6 @@ fig.update_layout(title={'text': 'COVID-19 Mortality By Age per 100,000 populati
 fig.show()
 #fig.write_html("html/covid_mortality_age.html")
 
-# +
-ft_ff = [deaths_ht(1,eng_wales_ages_18[2]), deaths_ht(8,eng_wales_ages_18[2]), deaths_ht(43,eng_wales_ages_18[2])]
-ff_sf = [deaths_ht(6,eng_wales_ages_18[3]), deaths_ht(63,eng_wales_ages_18[3]), deaths_ht(412,eng_wales_ages_18[3])]
-sf_sf = [deaths_ht(20,eng_wales_ages_18[4]), deaths_ht(99,eng_wales_ages_18[4]), deaths_ht(626,eng_wales_ages_18[4])]
-sf_ef = [deaths_ht(31,eng_wales_ages_18[5]), deaths_ht(181,eng_wales_ages_18[5]), deaths_ht(1231,eng_wales_ages_18[5])]
-ef_plus = [deaths_ht(45,eng_wales_ages_18[6]), deaths_ht(188,eng_wales_ages_18[6]), deaths_ht(1163,eng_wales_ages_18[6])]
-
-c_weeks = ['20 Mar 2020', '27 Mar 2020', '3 Apr 2020']
-
-fig = go.Figure(data = [
-    go.Bar(name='<1', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
-    go.Bar(name='1-14', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
-    go.Bar(name='15-44', x=c_weeks, y=ft_ff, text=ft_ff, textposition='outside'),
-    go.Bar(name='45-64', x=c_weeks, y=ff_sf, text=ff_sf, textposition='outside'),
-    go.Bar(name='65-74', x=c_weeks, y=sf_sf, text=sf_sf, textposition='outside'),
-    go.Bar(name='75-84', x=c_weeks, y=sf_ef, text=sf_ef, textposition='outside'),
-    go.Bar(name='85+', x=c_weeks, y=ef_plus, text=ef_plus, textposition='outside')
-])
-
-fig.update_layout(title={'text': 'COVID-19 Mortality By Age per 100,000 population <br> in England and Wales', 'xanchor': 'center', 'x': 0.5},
-                  barmode='group', 
-                  yaxis_range=(0, 90),  
-                  xaxis_title='Week Ending Date', 
-                  yaxis_title='Deaths/100000 pop')
-fig.show()
-fig.write_html("html/covid_mortality_age_adj.html")
 # +
 
 
@@ -342,6 +342,6 @@ for age, total in england_wales.items():
         seventyfive_eightyfour.append(total)
     elif age > 84:
         eightyfive_plus.append(total)
-# +
+# -
 
 
