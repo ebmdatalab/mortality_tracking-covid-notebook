@@ -23,6 +23,7 @@ import numpy as np
 
 # +
 #from https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/articles/ukpopulationpyramidinteractive/2020-01-08
+#Code to extract data is at bottom of notebook
 
 eng_wales_ages_18 = [669797, 10004735, 22447913, 15162118, 5906928, 3476922, 1447396]
 
@@ -33,11 +34,11 @@ def deaths_ht(deaths, pop):
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
          '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020', '13 Mar 2020',
-         '20 Mar 2020', '27 Mar 2020', '3 Apr 2020']
+         '20 Mar 2020', '27 Mar 2020', '3 Apr 2020', '10 Apr 2020']
 all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 
-                          10895, 11019, 10645, 11141, 16387], 
-                         dtype=np.float)
-rep_deaths = np.array([2141, 2477, 2188, 1894, 1746, 1572, 1602, 1618, 1529, 1551, 1488, 1514, 1534, 2106], dtype=np.float)
+                          10895, 11019, 10645, 11141, 16387, 18516], dtype=np.float)
+rep_deaths = np.array([2141, 2477, 2188, 1894, 1746, 1572, 1602, 1618, 1529, 1551, 1488, 
+                       1514, 1534, 2106, 1810], dtype=np.float)
 
 fig = go.Figure()
 
@@ -49,8 +50,7 @@ fig.update_layout(title={'text': 'Percent of All Mortality Caused by Respiratory
                   xaxis_title='Week Ending Date',
                   yaxis_title='% of All Mortality',
                   yaxis_range=(0, 25), 
-                  xaxis = dict(tickangle=-30))#,
-                  #annotations=[dict(x='10 Jan 2020', y=14058, text='Peak All Cause Mortality', showarrow=True)])
+                  xaxis = dict(tickangle=-30))
 
 fig.write_html("html/resp_mortality.html")
 fig.show()
@@ -58,9 +58,11 @@ fig.show()
 # +
 weeks = ['3 Jan 2020 <br> (Week 1)', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
          '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020', '13 Mar 2020', 
-         '20 Mar 2020', '27 Mar 2020', '3 Apr 2020 <br> (Week 14)']
-all_mortality = [12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019, 10645, 11141, 16387]
-five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498, 11205, 10573, 10130, 10305]
+         '20 Mar 2020', '27 Mar 2020', '3 Apr 2020', '10 Apr 2020 <br> (Week 15)']
+all_mortality = [12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019, 10645, 
+                 11141, 16387, 18516]
+five_year_mort = [12175, 13822, 13216, 12760, 12206, 11925, 11627, 11548, 11183, 11498, 11205, 10573, 
+                  10130, 10305, 10520]
 
 fig = go.Figure()
 
@@ -78,9 +80,9 @@ fig.add_shape(
         dict(
             type='line',
             x0='31 Jan 2020',
-            y0=10000,
+            y0=9800,
             x1='31 Jan 2020',
-            y1=17000,
+            y1=19000,
             line=dict(
                 color='Orange',
                 width=2
@@ -88,13 +90,14 @@ fig.add_shape(
 ))
 
 fig.update_layout(title={'text': 'All Cause Mortality in England and Wales', 'xanchor': 'center', 'x': 0.5}, 
+                  yaxis_range=(9800, 19000),
                   xaxis_title='Week Ending Date',
                   yaxis_title='Number of Deaths',
                   xaxis = dict(tickangle=-45),
                   font = dict(size=10),
                   annotations=[dict(x='10 Jan 2020', y=14058, text='2020 Peak', ax=40, ay=-25),
                                dict(x='31 Jan 2020', y=14000, text='COVID-19 Confirmed in UK', ax=120, ay=10),
-                               dict(x='20 Mar 2020', y=10645, text='2020 Low', ax=-40, ay=10)
+                               dict(x='20 Mar 2020', y=10645, text='Pre-spike 2020 Low', ax=-40, ay=10)
                               ])
 
 fig.show()
@@ -103,19 +106,19 @@ fig.write_html("html/all_mortality.html")
 # +
 weeks = ['3 Jan 2020', '10 Jan 2020', '17 Jan 2020', '24 Jan 2020', '31 Jan 2020', 
          '7 Feb 2020', '14 Feb 2020', '21 Feb 2020', '28 Feb 2020', '6 Mar 2020', 
-         '13 Mar 2020', '20 Mar 2020', '27 Mar 2020', '3 Apr 2020']
+         '13 Mar 2020', '20 Mar 2020', '27 Mar 2020', '3 Apr 2020', '10 Apr 2020']
 all_mortality = np.array([12254, 14058, 12990, 11856, 11612, 10986, 10944, 10841, 10816, 10895, 11019, 10645], 
                          dtype=np.float)
-deaths_under_1 = np.array([48, 50, 69, 53, 50, 31, 43, 51, 49, 56, 53, 44, 49, 51], dtype=np.float)
-deaths_1_14 = np.array([16, 26, 15, 21, 15, 16, 12, 18, 20, 20, 22, 12, 13, 21], dtype=np.float)
-deaths_15_44 = np.array([189, 275, 313, 314, 308, 271, 284, 321, 314, 313, 311, 275, 282, 288], dtype=np.float)
-deaths_45_64 = np.array([1202, 1500, 1517, 1357, 1349, 1331, 1289, 1271, 1257, 1252, 1341, 1263, 1301, 1860], 
+deaths_under_1 = np.array([48, 50, 69, 53, 50, 31, 43, 51, 49, 56, 53, 44, 49, 51, 38], dtype=np.float)
+deaths_1_14 = np.array([16, 26, 15, 21, 15, 16, 12, 18, 20, 20, 22, 12, 13, 21, 14], dtype=np.float)
+deaths_15_44 = np.array([189, 275, 313, 314, 308, 271, 284, 321, 314, 313, 311, 275, 282, 288, 332], dtype=np.float)
+deaths_45_64 = np.array([1202, 1500, 1517, 1357, 1349, 1331, 1289, 1271, 1257, 1252, 1341, 1263, 1301, 1860, 2111], 
                         dtype=np.float)
-deaths_65_74 = np.array([1860, 2198, 2013, 1958, 1927, 1808, 1753, 1744, 1795, 1769, 1754, 1780, 1805, 2734], 
+deaths_65_74 = np.array([1860, 2198, 2013, 1958, 1927, 1808, 1753, 1744, 1795, 1769, 1754, 1780, 1805, 2734, 2946], 
                         dtype=np.float)
-deaths_75_84 = np.array([3583, 4014, 3715, 3337, 3257, 3056, 3008, 3032, 2967, 3124, 3104, 3066, 3247, 5005], 
+deaths_75_84 = np.array([3583, 4014, 3715, 3337, 3257, 3056, 3008, 3032, 2967, 3124, 3104, 3066, 3247, 5005, 5613], 
                         dtype=np.float)
-deaths_over_85 = np.array([5356, 5995, 5348, 4816, 4706, 4473, 4555, 4404, 4414, 4361, 4434, 4205, 4444, 6428], 
+deaths_over_85 = np.array([5356, 5995, 5348, 4816, 4706, 4473, 4555, 4404, 4414, 4361, 4434, 4205, 4444, 6428, 7462], 
                           dtype=np.float)
 
 fig = go.Figure()
@@ -207,20 +210,26 @@ fig.update_layout(title={'text': 'COVID Mortality By Age in England and Wales', 
                  xaxis = dict(tickangle=-45))
 fig.show()
 #fig.write_html("html/covid_mortality_age.html")
+# -
 
+
+ft_ff = [deaths_ht(1,eng_wales_ages_18[2]), deaths_ht(8,eng_wales_ages_18[2]), 
+         deaths_ht(43,eng_wales_ages_18[2]), deaths_ht(74,eng_wales_ages_18[2])]
+ff_sf = [deaths_ht(6,eng_wales_ages_18[3]), deaths_ht(63,eng_wales_ages_18[3]), 
+         deaths_ht(412,eng_wales_ages_18[3]), deaths_ht(742,eng_wales_ages_18[3])]
+sf_sf = [deaths_ht(20,eng_wales_ages_18[4]), deaths_ht(99,eng_wales_ages_18[4]), 
+         deaths_ht(626,eng_wales_ages_18[4]), deaths_ht(1104,eng_wales_ages_18[4])]
+sf_ef = [deaths_ht(31,eng_wales_ages_18[5]), deaths_ht(181,eng_wales_ages_18[5]), 
+         deaths_ht(1231,eng_wales_ages_18[5]), deaths_ht(2210,eng_wales_ages_18[5])]
+ef_plus = [deaths_ht(45,eng_wales_ages_18[6]), deaths_ht(188,eng_wales_ages_18[6]), 
+           deaths_ht(1163,eng_wales_ages_18[6]), deaths_ht(2083,eng_wales_ages_18[6])]
 
 # +
-ft_ff = [deaths_ht(1,eng_wales_ages_18[2]), deaths_ht(8,eng_wales_ages_18[2]), deaths_ht(43,eng_wales_ages_18[2])]
-ff_sf = [deaths_ht(6,eng_wales_ages_18[3]), deaths_ht(63,eng_wales_ages_18[3]), deaths_ht(412,eng_wales_ages_18[3])]
-sf_sf = [deaths_ht(20,eng_wales_ages_18[4]), deaths_ht(99,eng_wales_ages_18[4]), deaths_ht(626,eng_wales_ages_18[4])]
-sf_ef = [deaths_ht(31,eng_wales_ages_18[5]), deaths_ht(181,eng_wales_ages_18[5]), deaths_ht(1231,eng_wales_ages_18[5])]
-ef_plus = [deaths_ht(45,eng_wales_ages_18[6]), deaths_ht(188,eng_wales_ages_18[6]), deaths_ht(1163,eng_wales_ages_18[6])]
-
-c_weeks = ['20 Mar 2020', '27 Mar 2020', '3 Apr 2020']
+c_weeks = ['20 Mar 2020', '27 Mar 2020', '3 Apr 2020', '10 Apr 2020']
 
 fig = go.Figure(data = [
-    go.Bar(name='<1', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
-    go.Bar(name='1-14', x=c_weeks, y=[0,0,0], text=[0,0,0], textposition='outside'),
+    go.Bar(name='<1', x=c_weeks, y=[0,0,0,0], text=[0,0,0,0], textposition='outside'),
+    go.Bar(name='1-14', x=c_weeks, y=[0,0,0,0], text=[0,0,0,0], textposition='outside'),
     go.Bar(name='15-44', x=c_weeks, y=ft_ff, text=ft_ff, textposition='outside'),
     go.Bar(name='45-64', x=c_weeks, y=ff_sf, text=ff_sf, textposition='outside'),
     go.Bar(name='65-74', x=c_weeks, y=sf_sf, text=sf_sf, textposition='outside'),
@@ -230,16 +239,16 @@ fig = go.Figure(data = [
 
 fig.update_layout(title={'text': 'COVID-19 Mortality By Age per 100,000 population <br> in England and Wales', 'xanchor': 'center', 'x': 0.5},
                   barmode='group', 
-                  yaxis_range=(0, 90),  
+                  yaxis_range=(0, 160),  
                   xaxis_title='Week Ending Date', 
                   yaxis_title='Deaths/100000 pop')
 fig.show()
-fig.write_html("html/covid_mortality_age_adj.html")
+#fig.write_html("html/covid_mortality_age_adj.html")
 # +
-c_weeks = ['20 Mar 2020', '27 Mar 2020', '03 Apr 2020']
+c_weeks = ['20 Mar 2020', '27 Mar 2020', '03 Apr 2020', '10 Apr 2020']
 
-c_deaths_under_1 = np.array([0,0,0], dtype=np.float)
-c_deaths_1_14 = np.array([0,0,0], dtype=np.float)
+c_deaths_under_1 = np.array([0,0,0,0], dtype=np.float)
+c_deaths_1_14 = np.array([0,0,0,0], dtype=np.float)
 c_deaths_15_44 = np.array(ft_ff, dtype=np.float)
 c_deaths_45_64 = np.array(ff_sf, 
                         dtype=np.float)
@@ -286,7 +295,7 @@ fig.update_layout(title={'text': 'COVID-19 Mortality By Age per 100,000 populati
                  yaxis_title='Deaths/100000 pop',
                  xaxis = dict(tickangle=-45))
 fig.show()
-#fig.write_html("html/covid_mortality_age.html")
+fig.write_html("html/covid_mortality_age_adj.html")
 
 # +
 
@@ -342,6 +351,6 @@ for age, total in england_wales.items():
         seventyfive_eightyfour.append(total)
     elif age > 84:
         eightyfive_plus.append(total)
-# -
+# +
 
 
