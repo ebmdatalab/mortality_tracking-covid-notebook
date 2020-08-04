@@ -488,6 +488,7 @@ def deaths_mil(deaths, pop):
     return round((deaths/pop) * 1000000,2)
 
 
+# +
 u_1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, deaths_mil(1, eng_wales_ages_18[0]), deaths_mil(1, eng_wales_ages_18[0]), 
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 o_ft = [0, 0, 0, 0, deaths_mil(1,eng_wales_ages_18[1]), deaths_mil(1,eng_wales_ages_18[1]), 
@@ -605,6 +606,7 @@ fig.write_html("html/covid_mortality_age_adj_per_mil.html")
 # -
 
 
+# +
 
 
 
